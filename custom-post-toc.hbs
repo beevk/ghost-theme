@@ -76,7 +76,7 @@ function godoTocBot() {
     var titleLink = document.createElement('a');
     titleLink.href = '#' + el.getAttribute('id');
     titleLink.textContent = el.textContent;
-    titleLink.classList = 'text-gray-500 block !no-underline hover:text-gray-900';
+    titleLink.classList = 'truncate w-32 text-gray-500 block !no-underline hover:text-gray-900 xl:w-36 2xl:w-40';
 
     $jsTocBot.appendChild(titleLink);
   });
