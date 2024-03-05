@@ -26,12 +26,18 @@
             </div>
 
             {{!-- Share and Tags buttons - on the right --}}
-            <div class="right-side top-0 bottom-0 absolute pr-8 row-start-1 hidden font-sans lg:block">
+            <div class="content-right-side top-0 bottom-0 absolute pl-8 row-start-1 hidden font-sans lg:block">
                 <div class="sticky top-20 overflow-auto scroll-transparent lg:max-h-(screen-16)">
-                    <div class="uppercase font-medium text-sm mb-3">Share and Tags</div>
-                    <div>
-                        {{> "components/tags"}}
-                        {{> "components/social-share" Tracking_name="Footer"}}
+                    <div class="uppercase font-medium text-sm mb-3">
+                        <div class="uppercase font-medium text-sm mb-3">Tags</div>
+                        <div class="space-y-4">
+                            {{> "components/tags"}}
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <div class="uppercase font-medium text-sm mb-3">{{t "Share"}}</div>
+                        {{!-- maybe replace with multiple social share icons --}}
+                        {{> "components/social-share-vertical" Tracking_name="Footer"}}
                     </div>
                 </div>
             </div>

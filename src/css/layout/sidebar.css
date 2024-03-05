@@ -1,4 +1,41 @@
 /* Sidebar */
-.godo-content-side {
+.godo-content-side,
+.content-left-side {
   grid-column: wide-start/main-start;
+}
+
+.content-right-side {
+  grid-column: 4/5;
+}
+
+.js-copy-link {
+  /* Your base styles for the link */
+  /* border: 1px solid red;; */
+}
+
+.js-copy-link.copied {
+  /* Styles for the animation */
+  box-shadow: 0 0 5px var(--color-link, green);
+  animation: instantGlow 0.1s ease-in-out forwards; /* Adjust duration as needed */
+  border-radius: 100px;
+}
+
+@keyframes instantGlow {
+  from { box-shadow: 0 0 0 rgba(0, 255, 0, 0); }
+  to { box-shadow: 0 0 5px var(--color-link, green); }
+}
+
+.js-copy-link.copied + .copy-tooltip {
+  /* Show tooltip only when glowing */
+  opacity: 0; /* Initially hidden */
+  animation: showOnGlow 0.5s ease-in-out forwards;
+  z-index: 10;
+  right: 50%;
+}
+
+@keyframes showOnGlow {
+  0% { opacity: 0; }
+  25% { opacity: 1; } /* Show tooltip during glow */
+  75% { opacity: 1; } /* Maintain visibility through the blink */
+  100% { opacity: 0; } /* Hide tooltip after animation */
 }
