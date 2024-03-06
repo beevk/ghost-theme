@@ -89,7 +89,7 @@
 
             var lastH2Link = null; // Keep track of last H2 link to append H3 links under it
 
-            $titles.forEach(function (el) {
+            $titles.forEach(function (el, i) {
                 if (el.tagName.toLowerCase() === 'h2') {
                     var titleLink = document.createElement('a');
                     titleLink.href = '#' + el.getAttribute('id');
@@ -98,13 +98,14 @@
                     var listItem = document.createElement('li'); // Create a list item
                     listItem.appendChild(titleLink); // Append the link to the list item
                     listItem.style.listStyleType = 'none'; // Remove bullet points
+                    listItem.classList = `toc-item-${i+1}` // Add class to the list item
                     $jsTocBot.appendChild(listItem); // Append the list item to the TOC container
                     lastH2Link = listItem; // Update last H2 link
                 } else if (el.tagName.toLowerCase() === 'h3' && lastH2Link) {
                     var titleLink = document.createElement('a');
                     titleLink.href = '#' + el.getAttribute('id');
                     titleLink.textContent = el.textContent;
-                    titleLink.classList = 'toc-item text-gray-500 block !no-underline hover:text-gray-900 pl-4'; // Add left indentation
+                    titleLink.classList = `toc-item-${i+1} toc-sub-item text-gray-500 block !no-underline hover:text-gray-900 pl-4`; // Add left indentation
                     lastH2Link.appendChild(titleLink); // Append H3 link under last H2 link
                 }
             });
