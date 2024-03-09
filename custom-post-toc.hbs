@@ -21,7 +21,8 @@
             <div class="godo-content-side top-0 bottom-0 absolute pr-8 row-start-1 hidden font-sans lg:block">
                 <div class="sticky top-20 overflow-auto scroll-transparent lg:max-h-(screen-16)">
                     <div class="uppercase font-medium text-sm mb-3">{{t "On this page"}}</div>
-                    <div class="js-tocbot text-base space-y-4 leading-tight"></div>
+                    {{!-- <div class="js-tocbot text-base space-y-4 leading-tight"></div> --}}
+                    <div class="toc list-none"></div>
                 </div>
             </div>
 
@@ -69,6 +70,8 @@
 
     {{/post}}
 
+    {{!-- Donate button --}}
+
     {{!-- 6 Related Articles - partials/article/article-related.hbs --}}
     {{> "article/article-related"}}
 
@@ -76,41 +79,41 @@
     {{#post}}{{> "article/article-comments"}}{{/post}}
 
     {{#contentFor "scripts"}}
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+    <script defer src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
     <script>
-        function addTOC() {
-            var $markdown = document.querySelector('.post-body');
-            if (!$markdown) return;
-
-            var $titles = $markdown.querySelectorAll('h2[id], h3[id]');
-
-            if (!$titles.length) return;
-
-            var $jsTocBot = document.querySelector('.js-tocbot');
-
-            var lastH2Link = null; // Keep track of last H2 link to append H3 links under it
-
-            $titles.forEach(function (el, i) {
-                if (el.tagName.toLowerCase() === 'h2') {
-                    var titleLink = document.createElement('a');
-                    titleLink.href = '#' + el.getAttribute('id');
-                    titleLink.textContent = el.textContent;
-                    titleLink.classList = 'toc-item text-gray-500 block !no-underline hover:text-gray-900';
-                    var listItem = document.createElement('li'); // Create a list item
-                    listItem.appendChild(titleLink); // Append the link to the list item
-                    listItem.style.listStyleType = 'none'; // Remove bullet points
-                    listItem.classList = `toc-item-${i+1}` // Add class to the list item
-                    $jsTocBot.appendChild(listItem); // Append the list item to the TOC container
-                    lastH2Link = listItem; // Update last H2 link
-                } else if (el.tagName.toLowerCase() === 'h3' && lastH2Link) {
-                    var titleLink = document.createElement('a');
-                    titleLink.href = '#' + el.getAttribute('id');
-                    titleLink.textContent = el.textContent;
-                    titleLink.classList = `toc-item-${i+1} toc-sub-item text-gray-500 block !no-underline hover:text-gray-900 pl-4`; // Add left indentation
-                    lastH2Link.appendChild(titleLink); // Append H3 link under last H2 link
-                }
+        function renderTOC() {
+            tocbot.init({
+                // Where to render the table of contents.
+                tocSelector: '.toc',
+                // Where to grab the headings to build the table of contents.
+                contentSelector: '.post-body',
+                // Which headings to grab inside of the contentSelector element.
+                headingSelector: 'h1, h2, h3',
+                // For headings inside relative or absolute positioned containers within content.
+                // hasInnerContainers: true,
+                orderedList: false,
             });
-        };
+        }
 
-        document.addEventListener('DOMContentLoaded', addTOC);
+        function addDonateFloatingButton() {
+            kofiWidgetOverlay.draw('engineeringwithbivek', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Support Us',
+                'floating-chat.donateButton.background-color': '#d9534f',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting === true) {
+                console.log('Item has just APPEARED!');
+                addDonateFloatingButton();
+                observer.unobserve(document.querySelector(".post-footer"));
+            }
+        }, { threshold: [0] });
+
+        observer.observe(document.querySelector(".post-footer"));
+        document.addEventListener('DOMContentLoaded', renderTOC);
     </script>
     {{/contentFor}}

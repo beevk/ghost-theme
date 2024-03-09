@@ -41,6 +41,19 @@
     @apply underline underline-offset-4 break-words;
     /* text-decoration: underline; */
     /* word-break: break-word; */
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  p a {
+    color: var(--color-primary, inherit) !important;
+
+    &:hover {
+      opacity: 0.8 !important;
+      /* color: var(--color-primary-hover, inherit) !important; */
+    }
   }
 
   & > hr,

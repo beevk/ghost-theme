@@ -2,7 +2,7 @@
     class="text-title flex flex-col items-start gap-5 items-center p-2 flex-none{{#unless class}} md:justify-end {{else}} {{class}}{{/unless}}">
     {{!-- Share on Twitter --}}
     <a href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute=" true"}}" target="_blank"
-        rel="noopener noreferrer" class="godo-tracking" title="{{t " Share on"}} Twitter" aria-label="{{t " Share on"}}
+        rel="noopener noreferrer" class="godo-tracking twitter" title="{{t " Share on"}} Twitter" aria-label="{{t " Share on"}}
         Twitter" data-event-category="Article" data-event-action="Share" data-event-label="{{Tracking_name}} - Twitter"
         data-event-non-interaction="true">
         <svg width="30" height="30" class="fill-current">
@@ -13,7 +13,7 @@
 
     {{!-- Share on Linkedin --}}
     <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute=" true"}}&amp;title={{encode title}}"
-        target="_blank" rel="noopener noreferrer" class="godo-tracking" title="{{t " Share on"}} Linkedin"
+        target="_blank" rel="noopener noreferrer" class="godo-tracking linkedin" title="{{t " Share on"}} Linkedin"
         aria-label="{{t " Share on"}} Linkedin" data-event-category="Article" data-event-action="Linkedin"
         data-event-label="{{Tracking_name}} - Linkedin" data-event-non-interaction="true">
         <svg width="30" height="30" class="fill-current">
@@ -24,7 +24,7 @@
 
     {{!-- Share on Facebook --}}
     <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}" target="_blank"
-        rel="noopener noreferrer" class="godo-tracking" title="{{t " Share on"}} Facebook" aria-label="{{t " Share on"}}
+        rel="noopener noreferrer" class="godo-tracking facebook" title="{{t " Share on"}} Facebook" aria-label="{{t " Share on"}}
         Facebook" data-event-category="Article" data-event-action="Share"
         data-event-label="{{Tracking_name}} - Facebook" data-event-non-interaction="true">
         <svg width="30" height="30" viewBox="0 0 30 30" class="fill-current">
@@ -35,7 +35,7 @@
 
     {{!-- Share on Whatsapp --}}
     <a href="whatsapp://send?text={{url absolute=" true"}}" target="_blank" rel="noopener noreferrer"
-        class="godo-tracking" aria-label="{{t " Share on"}} WhatSapp" data-event-category="Article"
+        class="godo-tracking whatsapp" aria-label="{{t " Share on"}} WhatSapp" data-event-category="Article"
         data-event-action="Share" data-event-label="{{Tracking_name}} - Whatsapp" data-event-non-interaction="true">
         <svg width="24" height="24" class="fill-current" viewBox="0 0 24 24">
             <path
@@ -50,7 +50,7 @@
     {{!-- Threads --}}
 
     {{!-- Copy Link --}}
-    <span class="godo-tracking cursor-pointer js-copy-link relative" title="{{t " Copy Link"}}" aria-label="{{t " Copy Link"}}"
+    <span class="godo-tracking copy-link cursor-pointer js-copy-link relative" title="{{t " Copy Link"}}" aria-label="{{t " Copy Link"}}"
         data-event-category="Article" data-event-action="Copy Link" data-event-label="{{Tracking_name}} - Copy Link"
         data-event-non-interaction="true">
         <svg width="30" height="30" class="fill-current">

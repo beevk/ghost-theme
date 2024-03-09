@@ -8,6 +8,57 @@
   grid-column: 4/5;
 }
 
+ol,
+li.toc-list-item {
+  list-style: none;;
+}
+
+.is-active-li {
+  color: var(--color-link, red);
+}
+
+.toc .toc-list {
+  padding-left: 0;
+}
+
+.toc-list .toc-list-item {
+  margin-left: 1rem;
+}
+
+.toc-list .toc-list-item::before {
+  content: "";
+  display: none;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 6px 0px var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.toc-list-item .is-active-link::before {
+  background-color: red;;
+}
+
+.godo-tracking.facebook:hover {
+  color: var(--color-facebook, #4267B2);
+}
+
+.godo-tracking.twitter:hover {
+  color: var(--color-twitter, #1DA1F2);
+}
+
+.godo-tracking.linkedin:hover {
+  color: var(--color-linkedin, #0077b5);
+}
+
+.godo-tracking.whatsapp:hover {
+  color: var(--color-whatsapp, #25D366);
+}
+
+.godo-tracking.copy-link:hover {
+  color: var(--color-link, green);
+}
+
 .js-copy-link {
   /* Your base styles for the link */
   /* border: 1px solid red;; */
