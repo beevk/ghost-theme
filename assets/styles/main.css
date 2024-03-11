@@ -1368,6 +1368,88 @@ a > code[class*="language-"] {
   font-weight: 500;
   line-height: 1;
 }
+button[role="tab"] {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+button[role="tab"].active {
+  color: #0abe51;
+  color: var(--color-primary, inherit);
+  border-bottom: 1px solid #0abe51;
+  border-bottom: 1px solid var(--color-primary, inherit);
+}
+/* Hide all content by default */
+div[role="tabpanel"] {
+  display: none;
+}
+/* Show the active content */
+div[role="tabpanel"].active {
+  display: block;
+}
+.tab-title {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  white-space: nowrap;
+  border-bottom-width: 2px;
+  border-color: transparent;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+.tab-title:hover {
+  /* @apply text-blue-600; */
+  color: #0abe51;
+  color: var(--color-primary, inherit);
+}
+.tab-title:focus {
+  /* @apply text-blue-600 outline-none; */
+  color: #0abe51;
+  color: var(--color-primary, inherit);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.tab-title:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+@media (color-index: 48) {
+  .tab-title {
+    color: var(--gray-400);
+  }
+
+  .tab-title:hover {
+    color: #0abe51;
+    color: var(--color-primary, inherit);
+  }
+
+  .tab-title:focus {
+    color: #0abe51;
+    color: var(--color-primary, inherit);
+    border-bottom: 1px solid #0abe51;
+    border-bottom: 1px solid var(--color-primary, inherit);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .tab-title {
+    color: var(--gray-400);
+  }
+
+  .tab-title:hover {
+    color: #0abe51;
+    color: var(--color-primary, inherit);
+  }
+
+  .tab-title:focus {
+    color: #0abe51;
+    color: var(--color-primary, inherit);
+    border-bottom: 1px solid #0abe51;
+    border-bottom: 1px solid var(--color-primary, inherit);
+  }
+}
 /* & > h1,
   & > h2,
   & > h3,
@@ -3254,6 +3336,5 @@ ol, li.toc-list-item {
     gap: 5rem;
   }
 }
-
 
 /*# sourceMappingURL=map/main.css.map */

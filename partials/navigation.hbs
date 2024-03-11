@@ -5,14 +5,14 @@
     <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" role="menu">
 
         {{#foreach navigation}}
-        <li itemprop="name" role="menuitem" class="inline-block {{#unless @last}}separator{{/unless}}">
-            <a itemprop="url" href="{{url absolute="true"}}"
-                class="godo-tracking hover:text-primary font-medium p-2 inline-block"
-                data-event-category="Footer"
-                data-event-action="Menu"
-                data-event-label="{{label}}"
-                data-event-non-interaction="true">{{label}}</a>
-        </li>
+            <li itemprop="name" role="menuitem" class="inline-block {{#unless @last}}separator{{/unless}}">
+                <a itemprop="url" href="{{url absolute='true'}}"
+                    class="godo-tracking hover:text-primary font-medium p-2 inline-block"
+                    data-event-category="Footer"
+                    data-event-action="Menu"
+                    data-event-label="{{label}}"
+                    data-event-non-interaction="true">{{label}}</a>
+            </li>
         {{/foreach}}
 
     </ul>

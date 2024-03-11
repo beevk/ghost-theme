@@ -119,3 +119,57 @@
 .has-first-letter::first-letter {
   @apply float-left text-6xl font-medium leading-none -ml-2 mr-2;
 }
+
+button[role="tab"] {
+  padding-inline: 1rem;
+}
+
+button[role="tab"].active {
+  color: var(--color-primary, inherit);
+  border-bottom: 1px solid var(--color-primary, inherit);
+}
+
+/* Hide all content by default */
+div[role="tabpanel"] {
+  display: none;
+}
+
+/* Show the active content */
+div[role="tabpanel"].active {
+  display: block;
+}
+
+.tab-title {
+  @apply inline-flex items-center gap-x-2 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm text-gray-500;
+}
+
+.tab-title:hover {
+  /* @apply text-blue-600; */
+  color: var(--color-primary, inherit);
+}
+
+.tab-title:focus {
+  /* @apply text-blue-600 outline-none; */
+  color: var(--color-primary, inherit);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.tab-title:disabled {
+  @apply pointer-events-none opacity-50;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tab-title {
+    @apply text-gray-400;
+  }
+
+  .tab-title:hover {
+    color: var(--color-primary, inherit);
+  }
+
+  .tab-title:focus {
+    color: var(--color-primary, inherit);
+    border-bottom: 1px solid var(--color-primary, inherit);
+  }
+}
