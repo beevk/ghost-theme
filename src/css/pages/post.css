@@ -1,13 +1,13 @@
 .godo-canvas {
   display: grid;
-  grid-template-columns: [full-start] minmax(4vmin,auto) [wide-start] minmax(auto,240px) [main-start] min(680px,calc(100% - 8vw)) [main-end] minmax(auto,240px) [wide-end] minmax(4vmin,auto) [full-end];
+  grid-template-columns: [full-start] minmax(4vmin, auto) [wide-start] minmax(auto, 240px) [main-start] min(680px, calc(100% - 8vw)) [main-end] minmax(auto, 240px) [wide-end] minmax(4vmin, auto) [full-end];
 
-  & > * {
+  &>* {
     grid-column: main-start/main-end;
   }
 }
 
-.is-canvas-full .godo-canvas > * {
+.is-canvas-full .godo-canvas>* {
   grid-column: full-start / full-end;
 }
 
@@ -18,7 +18,7 @@
   padding-top: 6vmin;
 
   /* stylelint-disable-next-line */
-  & > * + * {
+  &>*+* {
     margin-top: 4vmin;
     margin-bottom: 0;
   }
@@ -28,11 +28,11 @@
     color: var(--color-darkgrey);
   } */
 
-  & > [id]:not(:first-child) {
+  &>[id]:not(:first-child) {
     margin: 2em 0 0;
   }
 
-  & > [id] + * {
+  &>[id]+* {
     /* margin-top: 1em !important; */
     margin-top: 0.86em !important;
   }
@@ -56,17 +56,18 @@
     }
   }
 
-  & > hr,
-  & > blockquote {
+  &>hr,
+  &>blockquote {
     position: relative;
     margin-top: 6vmin;
   }
 
   /* stylelint-disable */
-  & > hr + *,
-  & > blockquote + * {
+  &>hr+*,
+  &>blockquote+* {
     margin-top: 6vmin !important;
   }
+
   /* stylelint-enable */
 
   h1,
@@ -80,7 +81,7 @@
   }
 
   /* List */
-  li + li {
+  li+li {
     margin-top: .5em;
   }
 
@@ -101,13 +102,13 @@
     }
   }
 
-  ul > li::before {
+  ul>li::before {
     content: "\2022";
     opacity: .9;
     transform: scale(1.1);
   }
 
-  ol > li::before {
+  ol>li::before {
     content: counter(post) ".";
     counter-increment: post;
     padding-right: 0.75rem;
@@ -120,55 +121,85 @@
   @apply float-left text-6xl font-medium leading-none -ml-2 mr-2;
 }
 
-button[role="tab"] {
+.multiTabCode nav {
+  @apply flex items-center px-2 space-x-2;
+  background-color: #2A3643;
+  min-height: 3rem;
+  border-radius: 8px;
+}
+
+.multiTabCode button {
+  background-color: #2A3643;
+  text-align: center;
+}
+
+.multiTabCode pre {
+  margin: 0;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/*
+.multiTabCode pre::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear,
+      40% 0%,
+      75% 84%,
+      from(var(--color-primary)),
+      to(#2A3643),
+      color-stop(.6, #2A3643))
+} */
+
+.multiTabCode button[role="tab"] {
   padding-inline: 1rem;
 }
 
-button[role="tab"].active {
+.multiTabCode button[role="tab"].active {
   color: var(--color-primary, inherit);
-  border-bottom: 1px solid var(--color-primary, inherit);
+  border-bottom: 2px solid var(--color-primary, inherit);
 }
 
 /* Hide all content by default */
-div[role="tabpanel"] {
+.multiTabCode div[role="tabpanel"] {
   display: none;
 }
 
 /* Show the active content */
-div[role="tabpanel"].active {
+.multiTabCode div[role="tabpanel"].active {
   display: block;
 }
 
-.tab-title {
-  @apply inline-flex items-center gap-x-2 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm text-gray-500;
+.multiTabCode .tab-title {
+  @apply items-center gap-x-2 whitespace-nowrap border-b-2 border-transparent px-1 py-1 text-sm text-gray-500;
 }
 
-.tab-title:hover {
+.multiTabCode .tab-title:hover {
   /* @apply text-blue-600; */
   color: var(--color-primary, inherit);
 }
 
-.tab-title:focus {
+.multiTabCode .tab-title:focus {
   /* @apply text-blue-600 outline-none; */
   color: var(--color-primary, inherit);
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-.tab-title:disabled {
+.multiTabCode .tab-title:disabled {
   @apply pointer-events-none opacity-50;
 }
 
 @media (prefers-color-scheme: dark) {
-  .tab-title {
+  .multiTabCode .tab-title {
     @apply text-gray-400;
   }
 
-  .tab-title:hover {
+  .multiTabCode .tab-title:hover {
     color: var(--color-primary, inherit);
   }
 
-  .tab-title:focus {
+  .multiTabCode .tab-title:focus {
     color: var(--color-primary, inherit);
     border-bottom: 1px solid var(--color-primary, inherit);
   }

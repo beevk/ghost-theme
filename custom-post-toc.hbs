@@ -114,55 +114,7 @@
         }, { threshold: [0] });
 
         observer.observe(document.querySelector(".post-footer"));
-        document.addEventListener('DOMContentLoaded', () => {
-            renderTOC();
-
-            // Get all tab buttons and content containers
-            var tabButtons = document.querySelectorAll("button[role='tab']");
-            var tabContents = document.querySelectorAll("div[role='tabpanel']");
-
-            console.log("tabButtons::", tabButtons);
-            console.log("tabContents::", tabContents);
-
-
-            // Add click event listeners to all tab buttons
-            tabButtons.forEach((button) => {
-                console.log("button::", button);
-                button.addEventListener("click", handleTabClick);
-            });
-
-            // Show the first tab content by default (if needed)
-            tabContents[0].classList.add("active");
-            tabButtons[0].classList.add("active");
-
-        );
-
-
-
-        // Function to handle tab clicks
-        function handleTabClick(event) {
-            const clickedButton = event.currentTarget;
-            const targetContentId = clickedButton.getAttribute("aria-controls");
-            console.log(targetContentId);
-
-            // Hide all content first
-            tabContents.forEach((content) => {
-                content.classList.remove("active");
-            });
-
-            // Show the clicked tab's content
-            const targetContent = document.getElementById(`content-${targetContentId}`);
-            targetContent.classList.add("active");
-
-            // Remove active class from all buttons
-            tabButtons.forEach((button) => {
-                button.classList.remove("active");
-            });
-
-            // Add active class to the clicked button
-            clickedButton.classList.add("active");
-        };
-
+        document.addEventListener('DOMContentLoaded', renderTOC);
 
     </script>
     {{/contentFor}}
