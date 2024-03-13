@@ -91,6 +91,10 @@
         ],
         "default": "Auto"
       },
+      "secondary_color": {
+        "type": "color",
+        "default": "#000000"
+      },
       "pagination": {
         "type": "select",
         "options": [
