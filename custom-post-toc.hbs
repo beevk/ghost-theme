@@ -20,7 +20,7 @@
             {{!-- Table of Content - on the left --}}
             <div class="godo-content-side top-0 bottom-0 absolute pr-8 row-start-1 hidden font-sans lg:block">
                 <div class="sticky top-20 overflow-auto scroll-transparent lg:max-h-(screen-16)">
-                    <div class="uppercase font-medium text-sm mb-3">{{t "On this page"}}</div>
+                    <div class="uppercase font-medium text-sm mb-3 toc-title">{{t "On this page"}}</div>
                     {{!-- <div class="js-tocbot text-base space-y-4 leading-tight"></div> --}}
                     <div class="toc list-none"></div>
                 </div>
@@ -30,7 +30,9 @@
             <div class="content-right-side top-0 bottom-0 absolute pl-8 row-start-1 hidden font-sans lg:block">
                 <div class="sticky top-20 overflow-auto scroll-transparent lg:max-h-(screen-16)">
                     <div class="uppercase font-medium text-sm mb-3">
+                        {{#if tags}}
                         <div class="uppercase font-medium text-sm mb-3">Tags</div>
+                        {{/if}}
                         <div class="space-y-4">
                             {{> "components/tags"}}
                         </div>
@@ -50,6 +52,7 @@
 
             {{!-- Social Share - ./partials/components/social-share --}}
             {{> "components/social-share" Tracking_name="Footer"}}
+            {{!-- Replace this with donate button --}}
 
             {{!-- Newsletter - ./partials/components/newsletter.hbs --}}
             {{> "components/newsletter"}}
@@ -96,8 +99,15 @@
             });
         }
 
+        const postBody = document.querySelector(".post-body");
+        const heading2 = postBody.getElementsByTagName("h2");
+        console.log(heading2);
+        if (!heading2.length) {
+            document.querySelector(".toc-title").classList.add("hidden");
+        }
+
         function addDonateFloatingButton() {
-            kofiWidgetOverlay.draw('engineeringwithbivek', {
+            kofiWidgetOverlay?.draw('engineeringwithbivek', {
                 'type': 'floating-chat',
                 'floating-chat.donateButton.text': 'Support Us',
                 'floating-chat.donateButton.background-color': '#d9534f',
