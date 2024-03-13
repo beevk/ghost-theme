@@ -4,6 +4,7 @@
 :root {
   --ghost-accent-color: $primary-color;
   --color-primary: var(--ghost-accent-color);
+  --color-secondary: #18D78B;
   --blank: #fff;
 
   /* Global Color */
@@ -45,7 +46,7 @@
   /* Button */
   --button-color: #292929;
   --button-bg: #f2f2f2;
-  --button-hover-color: rgba(0,0,0,.7);
+  --button-hover-color: rgba(0, 0, 0, .7);
   --button-hover-bg: #ececec;
 
   /* Button white */
@@ -135,7 +136,7 @@
     background: rgba(0, 0, 0, 0.5) !important;
   }
 
-  :not(pre) > code {
+  :not(pre)>code {
     background: #363f44;
     color: #a8bcc5;
   }

@@ -10,11 +10,12 @@
 
 ol,
 li.toc-list-item {
-  list-style: none;;
+  list-style: none;
+  ;
 }
 
 .is-active-li {
-  color: var(--color-link, red);
+  color: var(--color-link, #18D78B);
 }
 
 .toc .toc-list {
@@ -36,7 +37,8 @@ li.toc-list-item {
 }
 
 .toc-list-item .is-active-link::before {
-  background-color: red;;
+  background-color: var(--color-secondary, #18D78B);
+  ;
 }
 
 .godo-tracking.facebook:hover {
@@ -67,26 +69,48 @@ li.toc-list-item {
 .js-copy-link.copied {
   /* Styles for the animation */
   box-shadow: 0 0 5px var(--color-link, green);
-  animation: instantGlow 0.1s ease-in-out forwards; /* Adjust duration as needed */
+  animation: instantGlow 0.1s ease-in-out forwards;
+  /* Adjust duration as needed */
   border-radius: 100px;
 }
 
 @keyframes instantGlow {
-  from { box-shadow: 0 0 0 rgba(0, 255, 0, 0); }
-  to { box-shadow: 0 0 5px var(--color-link, green); }
+  from {
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0);
+  }
+
+  to {
+    box-shadow: 0 0 5px var(--color-link, green);
+  }
 }
 
-.js-copy-link.copied + .copy-tooltip {
+.js-copy-link.copied+.copy-tooltip {
   /* Show tooltip only when glowing */
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
+  /* Initially hidden */
   animation: showOnGlow 0.5s ease-in-out forwards;
   z-index: 10;
   right: 50%;
 }
 
 @keyframes showOnGlow {
-  0% { opacity: 0; }
-  25% { opacity: 1; } /* Show tooltip during glow */
-  75% { opacity: 1; } /* Maintain visibility through the blink */
-  100% { opacity: 0; } /* Hide tooltip after animation */
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  /* Show tooltip during glow */
+  75% {
+    opacity: 1;
+  }
+
+  /* Maintain visibility through the blink */
+  100% {
+    opacity: 0;
+  }
+
+  /* Hide tooltip after animation */
 }

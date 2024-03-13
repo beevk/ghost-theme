@@ -51,8 +51,12 @@
             {{> "components/tags"}}
 
             {{!-- Social Share - ./partials/components/social-share --}}
-            {{> "components/social-share" Tracking_name="Footer"}}
-            {{!-- Replace this with donate button --}}
+            {{!-- {{> "components/social-share" Tracking_name="Footer"}} --}}
+            {{#unless @member.paid}}
+            <div id="oneTimeDonation">
+                {{!-- <a href=" https://ko-fi.com/beyondsemicolon">Buy me a Coffee</a> --}}
+            </div>
+            {{/unless}}
 
             {{!-- Newsletter - ./partials/components/newsletter.hbs --}}
             {{> "components/newsletter"}}
@@ -84,6 +88,7 @@
     {{#contentFor "scripts"}}
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
     <script defer src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+
     <script>
         function renderTOC() {
             tocbot.init({
@@ -101,13 +106,12 @@
 
         const postBody = document.querySelector(".post-body");
         const heading2 = postBody.getElementsByTagName("h2");
-        console.log(heading2);
         if (!heading2.length) {
             document.querySelector(".toc-title").classList.add("hidden");
         }
 
         function addDonateFloatingButton() {
-            kofiWidgetOverlay?.draw('engineeringwithbivek', {
+            kofiWidgetOverlay?.draw('beyondsemicolon', {
                 'type': 'floating-chat',
                 'floating-chat.donateButton.text': 'Support Us',
                 'floating-chat.donateButton.background-color': '#d9534f',
@@ -117,7 +121,6 @@
 
         var observer = new IntersectionObserver(function (entries) {
             if (entries[0].isIntersecting === true) {
-                console.log('Item has just APPEARED!');
                 addDonateFloatingButton();
                 observer.unobserve(document.querySelector(".post-footer"));
             }
